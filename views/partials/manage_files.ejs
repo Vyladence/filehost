@@ -1,0 +1,79 @@
+<div id="delete_popup" class="popup" style="display: none;">
+    <div class="prompt">Are you sure you want to delete this file?</div>
+
+    <div class="button_wrapper">
+        <div class="button_group">
+            <button onclick="document.getElementById('delete_popup').style.display='none'">Cancel</button>
+            <button class="delete_button" onclick="deleteSelectedFile()">Delete</button>
+        </div>
+    </div>
+</div>
+
+<div class="content_box">
+    <link href="/desktop_stylesheets/file_manager.css" rel="stylesheet">
+    <div class="table_wrapper">
+        <table id="fileTable" class="file_list" cellspacing="0" data-directory="<%= data.currentPath %>">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Name</th>
+                    <th>Size</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <% for (file in data.fileInfo) { %>
+                <tr class="file" onclick="selectFile(this)" ondblclick="this.children[1].children[0].click()">
+                    <td class="icon">
+                        <% if (data.fileInfo[file].isDirectory) { %>
+                            <img src="/svgs/folder.svg">
+                        <% } %>
+                    </td>
+                    <td class="file_name">
+                        <% if (data.fileInfo[file].isBackButton) { %>
+                            <a onclick="window.history.back()">
+                                <%= file %>
+                            </a>
+                        <% } else { %> 
+                        <a href="<%= data.fileInfo[file].isDirectory ? `?path=${data.currentPath}/${encodeURIComponent(file)}` : `/file${data.currentPath}/${encodeURIComponent(file)}` %>" <%= !data.fileInfo[file].isDirectory ? `target="_blank"` : `` %>>
+                            <%= file %>
+                        </a>
+                        <% } %> 
+                    </td>
+                    <td class="file_size">
+                        <div>
+                            <%= data.fileInfo[file].size %>
+                        </div>
+                    </td>
+                </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="control_panel" id="control_panel">
+    <div class="modify_file">
+        <input placeholder="Directory (File Path)" id="file_directory_input" autocomplete="off">
+        <button class="update_button" onclick="moveFile(this)">
+            Move File
+        </button>
+    </div>
+    <div class="spacer"></div>
+    <div class="modify_file">
+        <input placeholder="File Name" id="rename_file_input" autocomplete="off">
+        <button class="update_button" onclick="moveFile(this)">
+            Update Filename
+        </button>
+    </div>
+    <div class="spacer"></div>
+    <div class="modify_file">
+        <button class="single_use_button" onclick="singleUse(this)">Create single-use link and copy to clipboard</button>
+    </div>
+    <div class="end_buttons">
+        <button class="delete_button" onclick="deleteFilePopup()" style="display:flex; justify-content:center;">
+            <img src="/svgs/trash.svg" style="margin:5px">
+            <div style="margin-block:auto">Delete</div>
+        </button>
+    </div>
+</div>
+<script src="/scripts/admin_file_manager.js"></script>

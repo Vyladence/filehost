@@ -1,0 +1,99 @@
+@font-face {
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 300;
+    src: url("/fonts/Outfit-Light.woff") format('woff');
+}
+
+@font-face {
+    font-family: 'Poppins';
+    font-style: light;
+    font-weight: 300;
+    src: url("/fonts/Poppins-Light.woff2") format('woff2');
+}
+
+body {
+    background: url("/images/login-background.jpg");
+    background-size: cover;
+
+    display: flex;
+    height: 98vh;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    height: fit-content;
+    padding-block: 25px;
+    backdrop-filter: blur(8px) brightness(0.9);
+    border-radius: 25px;
+    border: 2px solid #ddd;
+    gap: 20px;
+    justify-content: center;
+    margin: auto;  
+    background-color: rgba(0,0,0,0.25);
+}
+
+form .form_label {
+    font-family: Outfit, Arial, Helvetica, sans-serif;
+    font-size: 28px;
+    color: white;
+    width: 100%;
+    text-align: center;
+    padding-block: auto;
+    margin-block: 20px;
+}
+
+form input {
+    font-family: Poppins, Arial, Helvetica, sans-serif;
+    margin-inline: auto;
+    box-sizing: border-box;
+    background: none;
+    color: white;
+
+    border: 2px solid #fff;
+    border-radius: 45px;
+
+    height: 45px;
+    width: 350px;
+
+    padding-inline: 15px;
+    padding-block: none;
+}
+
+form input:focus {
+    outline: none;
+}
+
+form button {
+    font-family: Poppins, Arial, Helvetica, sans-serif;
+    margin-inline: auto;
+    box-sizing: border-box;
+    background: white;
+    color: black;
+    
+    border: 2px solid #fff;
+    border-radius: 45px;
+
+    height: 45px;
+    width: 350px;
+    
+    padding-inline: 15px;
+    padding-block: none;
+    text-align: center;
+    cursor: pointer;
+    transition: 100ms;
+}
+
+form button:hover {
+    background-color: #ddd;
+}
+
+form #invalid-login-warning-text {
+	color:#f00;
+    font-family: Poppins, Arial, Helvetica, sans-serif;
+    margin: -10px;
+    margin-inline: auto;
+    min-height: 25px;
+}

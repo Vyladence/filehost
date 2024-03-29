@@ -1,0 +1,133 @@
+form {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-inline: auto;
+}
+
+form #file_selector_button {
+    height: 80px;
+    width: 600px;
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    outline: 2px dashed #ccc;
+    outline-offset: -2px;
+    border-radius: 10px;
+    padding: 20px;
+    cursor: pointer;
+
+    font-family: Outfit, Arial, Helvetica, sans-serif;
+}
+
+form #file_selector_button p {
+    display: flex;
+    justify-content: center;
+    word-break: break-all;
+    padding: 10px;
+    text-align: center;
+    margin: 0;
+}
+
+form #file_selector_button>div {
+    display: flex;
+    background-color: #333;
+    border-radius: 5px;
+    width: 100%;
+    height: 100%;
+    flex-direction: row;
+    gap: 15px;
+    padding-inline: 20px;
+    box-sizing: border-box;
+}
+
+form #file_selector_button>div>.filename {
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    text-align: center;
+    margin-block: auto;
+    
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: fade(10px);
+}
+
+form #file_selector_button>div>.filename:before {
+    content:'';
+    width:100%;
+    height:100%;    
+    position:absolute;
+    left:0;
+    top:0;
+    background:linear-gradient(90deg, transparent 95%, #333);
+  }
+
+form #file_selector_button>div>.filesize {
+    color: #bbb;
+    width: fit-content;
+    text-align: center;
+    margin-block: auto;
+}
+
+form input {
+    font-family: Poppins, Arial, Helvetica, sans-serif;
+    margin-inline: auto;
+    box-sizing: border-box;
+    background: none;
+    color: white;
+
+    border: 2px solid #fff;
+    border-radius: 45px;
+
+    height: 45px;
+    width: 100%;
+
+    padding-inline: 15px;
+    padding-block: none;
+}
+
+form input:focus {
+    outline: none;
+}
+
+#stylized_upload_button {
+    box-sizing: border-box;
+    margin-inline: auto;
+    position: relative;
+    display: flex;
+    transition: 250ms;
+    height: 25px;
+    width: 100px;
+    overflow: hidden;
+    border-radius: 30px;
+    border: 2px #aaa solid;
+    cursor: pointer;
+}
+
+#stylized_upload_button:hover {
+    background-color: #222;
+}
+
+#stylized_upload_button #upload_text {
+    font-family: Outfit, Arial, Helvetica, sans-serif;
+    margin-block: auto;
+    text-align: center;
+    width: 100%;
+    font-size: 12px;
+    transition: 350ms;
+    z-index: 5;
+}
+  
+#stylized_upload_button #upload_progress {
+    position: absolute;
+    height: 100%;
+    background: linear-gradient(90deg,#8419b6 0,#4d1cf7 100%);
+    border-radius: 20px;
+    transition: 100ms;
+    width: 0px
+}
+

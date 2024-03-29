@@ -1,0 +1,33 @@
+<div id="uploaded_popup" class="popup" style="display: none;">
+    <div class="prompt">File Upload Completed!</div>
+
+    <div class="button_wrapper">
+        <div class="button_group">
+            <button onclick="copyText(this.dataset.newLink).then(this.innerHTML = 'Copied!').then(setTimeout( () => {this.innerHTML = 'Copy Link'}, 2000 ))" id="copy_link_button" data-newLink="">Copy Link</button>
+            <button onclick="location.reload()">Upload Another</button>
+        </div>
+    </div>
+</div>
+
+<div class="content_box">
+    <link href="/desktop_stylesheets/file_uploader.css" rel="stylesheet">
+    <form id="upload_form">
+        <input type="file" style=display:none id="file-input" name="file" onchange="changeText(this)">
+        <label class="button" id="file_selector_button" for="file-input">
+            <p>Drag and drop or click to select a file - Max 500MB</p>
+            <div style="display:none;">
+                <div class="filename"></div>
+                <div class="filesize"></div>
+            </div>
+        </label>
+        <input type="text" name="newFilename" placeholder="File name" autocomplete="off" onkeypress="resetWarning();" id="filenameInput">
+        <input type="text" name="destination" placeholder="Destination Directory" autocomplete="off" onkeypress="resetWarning();" id="destinationDirInput">
+
+        <button type="submit" id="upload_button" style=display:none></button>
+        <label class="disabled button" id="stylized_upload_button" for="upload_button">
+            <div id="upload_text">Upload</div>
+            <div id="upload_progress"></div>
+        </label>
+    </form>
+</div>
+<script src="/scripts/admin_file_uploader.js"></script>

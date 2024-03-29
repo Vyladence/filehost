@@ -1,0 +1,67 @@
+<div id="delete_popup" class="popup" style="display: none;">
+    <div class="prompt">Are you sure you want to delete this user?</div>
+
+    <div class="button_wrapper">
+        <div class="button_group">
+            <button onclick="this.parentElement.parentElement.style.display='none'">Cancel</button>
+            <button class="delete_button" onclick="deleteUser(this.parentElement.parentElement.dataset.user)">Delete</button>
+        </div>
+    </div>
+</div>
+
+<div id="link_generator" class="popup" style="display: none;">
+    <div class="prompt">Invite Link Generator</div>
+    <form id="link_generator_form">
+        <div id="CREATE_USER">
+            <label for="permission_level">Permission Level:</label>
+            <select name="permission_level" id="permission_level" autocomplete="off">
+                <option value="admin">Admin</option>
+            </select>
+        </div>
+    </form>
+
+    <div class="button_group">
+        <button onclick="this.parentElement.parentElement.style.display='none'">Cancel</button>
+        <button class="standard_button" onclick="createNewLink()">Confirm</button>
+    </div>
+</div>
+
+<div class="content_box">
+    <link href="/desktop_stylesheets/temp_links.css" rel="stylesheet">
+    <div class="table_wrapper">
+        <table id="keyTable" class="key_list" cellspacing="0" data-directory="<%= data.currentPath %>">
+            <thead>
+                <tr>
+                    <th class="username">Username <button style="margin-left:4px" onclick="linkGeneratorPopup()">Create Invite Link</button></th>
+                    <th class="type">Type</th>
+                    <th class="date_created">Date Created</th>
+                    <th class="last_logged_in">Last Logged In</th>
+                    <th class="delete_button"></th>
+                </tr>
+            </thead>
+
+            <tbody id="userTable">
+                <% for (user in data.userList) { %>
+                <tr class="user" data-user="<%= data.userList[user].username %>">
+                    <td class="username">
+                        <%= data.userList[user].username + (data.userList[user].username == data.user ? " (You)" : "")%> 
+                    </td>
+                    <td class="type">
+                        <%= data.userList[user].permissionLevel %>
+                    </td>
+                    <td id="date_created">
+                        <%= data.userList[user].joinDate %> 
+                    </td>
+                    <td id="last_logged_in">
+                        <%= data.userList[user].lastLoggedIn %> 
+                    </td>
+                    <td>
+                        <button class="delete_button" onclick="deleteUserPopup(this.parentElement.parentElement.dataset.user)"><img src="/svgs/trash.svg"></button>
+                    </td>
+                </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+</div>
+<script src="/scripts/admin_user_manager.js"></script>

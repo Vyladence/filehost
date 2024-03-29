@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title><%= data.siteName %> Admin Panel</title>
+
+		<link href="/desktop_stylesheets/admin_panel.css" rel="stylesheet">
+	</head>
+	<body> 
+		<div class="sidebar">
+            <div class="branding">
+                <img src="/favicons/favicon-32x32.png">
+                <div class="title" id="title" style="font-size: 32px;">
+                    <%= data.siteName %>
+                </div>
+            </div>   
+            <!-- <a class="page_button <%= data.selectedPage == 'home' ? 'selected' : '' %>" href="/admin">
+                <img src="/svgs/house.svg">
+                <div class="label">
+                    Home
+                </div>
+            </a>
+            <div class="spacer"></div> -->
+            <a class="page_button <%= data.selectedPage == 'manage_files' ? 'selected' : '' %>" href="/admin/manage_files">
+                <img src="/svgs/folder.svg">
+                <div class="label">
+                    Manage Files
+                </div>
+            </a>
+            <a class="page_button <%= data.selectedPage == 'upload_file' ? 'selected' : '' %>" href="/admin/upload_file">
+                <img src="/svgs/upload.svg">
+                <div class="label">
+                    Upload a File
+                </div>
+            </a>
+            <a class="page_button <%= data.selectedPage == 'temp_links' ? 'selected' : '' %>" href="/admin/temp_links">
+                <img src="/svgs/clock.svg">
+                <div class="label">
+                    Temporary Links
+                </div>
+            </a>
+            <a class="page_button <%= data.selectedPage == 'users' ? 'selected' : '' %>" href="/admin/users">
+                <img src="/svgs/user.svg">
+                <div class="label">
+                    Users
+                </div>
+            </a>
+            <!-- <a class="page_button <%= data.selectedPage == 'settings' ? 'selected' : '' %>" href="/admin/settings">
+                <img src="/svgs/settings.svg">
+                <div class="label">
+                    Settings
+                </div>
+            </a> -->
+        </div>
+        <div class="page_wrapper">
+            <div class="header">
+                <div class="page_title">
+                    <%= data.friendlyName %>
+                </div>
+                <div class="user_container" onclick="toggleUserPopup()">
+                    <%= data.user %>
+                    <img src="/svgs/down_arrow.svg">
+                </div>
+                <div class="user_popup" id="user_popup" style="display:none">
+                    <div onclick="logout()">Log Out</div>
+                </div>
+            </div>
+            <div class="container">
+                <%- include(`partials/${data.selectedPage}.ejs`) %>
+            </div>  
+        </div>
+		<script src="/scripts/admin_panel.js"></script>
+	</body>
+</html>
+

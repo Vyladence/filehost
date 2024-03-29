@@ -1,0 +1,78 @@
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 800;
+  src: url("/fonts/Montserrat.woff2") format('woff2');
+}
+
+body { 
+    display: flex;
+    padding: 0;
+    margin: 0;
+    height: 100vh;
+    background:#030005;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-inline: auto;
+    margin-block: auto;
+    width: fit-content;
+}
+
+.text {
+    display: flex;
+    flex-direction: column;
+    font-family: montserrat, sans-serif;
+    line-height: 0.8;
+}
+
+.text .number { 
+    width: fit-content;
+    margin-inline: auto;
+    font-size: 250px;
+    font-weight: 800;
+    color: #030005;
+    text-transform: uppercase;
+    text-shadow: -4px -4px 8px #8400ff, 4px 4px 8px #ff005a;
+    letter-spacing: -24px;
+    padding-right: 28px;
+}
+
+.text .name {
+    text-align: center;
+    width: fit-content;
+    margin-top: -50px;
+    margin-inline: auto;
+    font-size: 40px;
+    font-weight: 700;
+    color:#fff;
+    text-transform: uppercase;
+    letter-spacing: 22px;
+    padding-left: 22px;
+}
+
+.homebutton {
+    font-family: montserrat, sans-serif;
+    display: flex;
+    text-transform: uppercase;
+    color: #ff005a;
+    text-decoration: none;
+    border: 2px solid;
+    background: 0 0;
+    padding: 10px 40px;
+    font-size: 14px;
+    letter-spacing: 5px;
+    font-weight: 700;
+    -webkit-transition: .2s all;
+    transition: .2s all;
+    border-radius: 6px;
+    cursor: pointer;
+    width: fit-content;
+    margin-top: 50px;
+    align-self: center;
+}
+.homebutton:hover {
+    color:#8400ff
+}
