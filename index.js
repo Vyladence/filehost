@@ -402,7 +402,8 @@ app.post(["/upload"], restrict, (req, res) => {
         fileNum += 1
     }
     
-    fs.rename(req.files.file.tempFilePath, rootDir + finalPath, () => {})
+    fs.cpSync(req.files.file.tempFilePath, rootDir + finalPath, () => {})
+    fs.rmSync(req.files.file.tempFilePath)
     
     res.reply(200, finalPath)
 })
