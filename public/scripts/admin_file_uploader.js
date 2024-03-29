@@ -85,13 +85,11 @@ function copyText (text) {
 			percentage = Math.floor(percentDecimal * 100)
 			
 			document.getElementById("upload_progress").style.width = (percentDecimal * 600) + "px"
+            document.getElementById("stylized_upload_button").children[0].innerHTML = percentage + "%"
+            
 
             if (percentage == 100) {
-                document.getElementById("stylized_upload_button").children[0].style.fontWeight = "700"
-                document.getElementById("stylized_upload_button").children[0].style.transition = "0ms"
-                document.getElementById("stylized_upload_button").children[0].style.color = "black"
                 document.getElementById("stylized_upload_button").children[0].innerHTML = "Processing..."
-                document.getElementById("stylized_upload_button").children[0].style.transform = ""
             }
 		};
 
@@ -101,7 +99,6 @@ function copyText (text) {
         xhr.setRequestHeader("Accept", "application/json")
 
         document.getElementById("stylized_upload_button").style.width = "100%"
-        document.getElementById("stylized_upload_button").children[0].style.transform = "translateX(350px)" 
 
         // Send the data.
         xhr.send(formData);
