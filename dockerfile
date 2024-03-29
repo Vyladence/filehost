@@ -10,4 +10,4 @@ COPY . /app
 
 EXPOSE 8080
 
-CMD node index_verbose.js
+CMD node index.js
