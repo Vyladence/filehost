@@ -26,6 +26,10 @@ fs.readdirSync("./default_data").forEach((file) => {
     }
 })
 
+if (!fs.existsSync("./files")) {
+    fs.mkdirSync("./files")
+}
+
 const db = new require('better-sqlite3')('./data/filehost.db');
 SITE_NAME = require("./data/config.json")["site_name"]
 const Users = require('./user_management')(db)
