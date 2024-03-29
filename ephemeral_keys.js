@@ -38,6 +38,8 @@ function convertKeyInfo (row) {
         type: row["type"],
         data: JSON.parse(row["json_data"]),
         remainingUses: row["remaining_uses"],
+        creator: row["created_by"],
+        timestamp: row["created_at"]
     }
 }
 
@@ -61,7 +63,7 @@ function createEphemeralKey ( type = "", uses = 0, jsonData = {}, user = "" ) {
 
     newKey = generateKey()
 
-    DB.prepare("INSERT INTO ephemeral_keys (key, type, remaining_uses, json_data, created_by) VALUES (?, ?, ?, ?, ?)").run(newKey, type, uses, JSON.stringify(jsonData), user)
+    DB.prepare("INSERT INTO ephemeral_keys (key, type, remaining_uses, json_data, created_by, created_at) VALUES (?, ?, ?, ?, ?, ?)").run(newKey, type, uses, JSON.stringify(jsonData), user, Date.now())
     return newKey;
 }
 

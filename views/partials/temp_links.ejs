@@ -20,7 +20,7 @@ String.prototype.toProperCase = function () {
     <div class="button_wrapper">
         <div class="button_group">
             <button onclick="this.parentElement.parentElement.style.display='none'">Cancel</button>
-            <button class="delete_button" onclick="deleteLink(this.parentElement.parentElement.dataset.key)">Delete</button>
+            <button class="delete_button" onclick="deleteLink(this.parentElement.parentElement.parentElement.dataset.key)">Delete</button>
         </div>
     </div>
 </div>
@@ -61,19 +61,21 @@ String.prototype.toProperCase = function () {
 <div class="content_box">
     <link href="/desktop_stylesheets/temp_links.css" rel="stylesheet">
     <div class="table_wrapper">
-        <table id="keyTable" class="key_list" cellspacing="0" data-directory="<%= data.currentPath %>">
+        <table class="key_list" cellspacing="0" data-directory="<%= data.currentPath %>">
             <thead>
                 <tr>
                     <th class="key">Link Value <button style="margin-left:4px" onclick="linkGeneratorPopup()">Create New Link</button></th>
                     <th class="remaining_uses">Remaining Uses</th>
                     <th class="type">Type</th>
                     <th class="additional_info">Additional Info</th>
+                    <th class="created_by">Creator</th>
+                    <th class="created_at">Date/Time Created</th>
                     <th class="copy_link_button"></th>
                     <th class="delete_button"></th>
                 </tr>
             </thead>
 
-            <tbody>
+            <tbody id="linkTable" >
                 <% for (key in data.keyList) { %>
                 <tr class="key" data-key="<%= data.keyList[key].key %>">
                     <td class="key">
@@ -91,6 +93,12 @@ String.prototype.toProperCase = function () {
                         <% } else if (data.keyList[key].type == "DOWNLOAD_FILE") { %>
                             Target file path: <%= data.keyList[key].data.targetPath %>
                         <% } %>
+                    </td>
+                    <td class="created_by">
+                        <%= data.keyList[key].creator + (data.keyList[key].creator == data.user ? " (You)" : "")%> 
+                    </td>
+                    <td class="created_at" id="timestamp">
+                        <%= data.keyList[key].timestamp %>
                     </td>
                     <td>
                         <button class="standard_button" onclick="copyLink(this)" style="min-width: 75px;">Copy Link</button>

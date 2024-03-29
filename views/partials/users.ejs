@@ -3,8 +3,8 @@
 
     <div class="button_wrapper">
         <div class="button_group">
-            <button onclick="this.parentElement.parentElement.style.display='none'">Cancel</button>
-            <button class="delete_button" onclick="deleteUser(this.parentElement.parentElement.dataset.user)">Delete</button>
+            <button onclick="this.parentElement.parentElement.parentElement.style.display='none'">Cancel</button>
+            <button class="delete_button" onclick="deleteUser(this.parentElement.parentElement.parentElement.dataset.user)">Delete</button>
         </div>
     </div>
 </div>
@@ -20,9 +20,12 @@
         </div>
     </form>
 
-    <div class="button_group">
-        <button onclick="this.parentElement.parentElement.style.display='none'">Cancel</button>
-        <button class="standard_button" onclick="createNewLink()">Confirm</button>
+
+    <div class="button_wrapper">
+        <div class="button_group">
+            <button onclick="this.parentElement.parentElement.parentElement.style.display='none'">Cancel</button>
+            <button class="standard_button" onclick="createNewLink()">Confirm</button>
+        </div>
     </div>
 </div>
 

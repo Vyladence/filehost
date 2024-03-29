@@ -57,15 +57,13 @@ function createNewLink() {
 		if (response.status == 200) {
 			copyText(location.origin + "/" + json.message)
 			location.reload()
-		} else  {
-			document.getElementById("invalid-login-warning-text").innerHTML = json.message
 		}
 	}))
 }
 
 function deleteLinkPopup(text) {
-	document.getElementById("delete_popup").dataset.key = text
     popup = document.getElementById("delete_popup")
+	popup.dataset.key = text
     popup.style.display = ""
 }
 
@@ -82,4 +80,11 @@ function deleteLink(link) {
     .then(response => { 
         if (response.status == 200) location.reload()
     })
+}
+
+userTable = document.getElementById("linkTable").children
+for (entry in [...Array(userTable["length"]).keys()]) {
+	dateCreated = userTable[entry].querySelector("#timestamp")
+	created_date = new Date(Number(dateCreated.innerHTML.trim()))
+	dateCreated.innerHTML = created_date.toLocaleString()
 }
