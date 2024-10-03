@@ -55,7 +55,7 @@ function copyText (text) {
         //Grab only one file since this script disallows multiple file uploads.
         var file = files[0];
 
-        if (file.size >= 500 * 1024 * 1024) {
+        if (file.size >= 5 * 1024 * 1024 * 1024) { // 5GB
             alert("File is too big!");
             return;
         }
