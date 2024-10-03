@@ -5,7 +5,7 @@ function changeText(caller) {
     fileObj = document.getElementById("file_selector_button").children[1]
     filenameInput = document.getElementById("filenameInput")
 
-	if(filesize > 500 * 1024 * 1024){
+	if(filesize > 5 * 1024 * 1024 * 1024){ // 5 GB
 		alert("File is too big!");
 	} else {
         fileObj.children[0].innerHTML = filename

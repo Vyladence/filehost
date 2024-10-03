@@ -10,8 +10,8 @@ console.log("Running on port " + (process.env['PORT'] || 8080))
 app.set('view engine', 'ejs');
 app.set('trust proxy', 'loopback')
 
-// TODO: Write own fileupload middleware, this one's fucking broken
 app.use(fileUpload({
+    limits: { fileSize: 5 * 1024 * 1024 * 1024 }, // 5 GB
     useTempFiles : true,
     tempFileDir : 'tmp',
 }));
