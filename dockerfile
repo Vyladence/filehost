@@ -5,7 +5,7 @@ WORKDIR /app
 
 COPY package.json /app
 COPY package-lock.json /app
-RUN npm ci --only=production && npm cache clean --force
+RUN npm ci && npm cache clean --force
 COPY . /app
 
 EXPOSE 8080
