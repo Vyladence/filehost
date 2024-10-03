@@ -75,6 +75,7 @@ function copyText (text) {
                 document.getElementById("copy_link_button").dataset.newLink = location.origin + "/file" + JSON.parse(xhr.responseText).message
                 document.getElementById("uploaded_popup").style.display = ""
                 document.getElementById("stylized_upload_button").children[0].innerHTML = "Done!"
+				document.title = `Upload Completed!`
 			} else {
 				console.log("error " + this.status);
 			}
@@ -85,11 +86,13 @@ function copyText (text) {
 			percentage = Math.floor(percentDecimal * 100)
 			
 			document.getElementById("upload_progress").style.width = (percentDecimal * 600) + "px"
-            document.getElementById("stylized_upload_button").children[0].innerHTML = percentage + "%"
+            document.getElementById("stylized_upload_button").children[0].innerHTML = `${percentage}%`
+			document.title = `Uploading - ${percentage}%`
             
 
             if (percentage == 100) {
                 document.getElementById("stylized_upload_button").children[0].innerHTML = "Processing..."
+				document.title = `Processing...`
             }
 		};
 
