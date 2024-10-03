@@ -1,5 +1,5 @@
 FROM node:current-alpine
-ENV NODE_ENV production
+ENV NODE_ENV=production
 
 WORKDIR /app
 
@@ -10,4 +10,4 @@ COPY . /app
 
 EXPOSE 8080
 
-CMD node index.js
+CMD ["node", "index.js"]
